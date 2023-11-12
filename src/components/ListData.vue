@@ -1,7 +1,7 @@
 <template>
     <v-app>
       <v-main>
-        <v-card v color="transparent"  class="d-flex justify-center text-center">
+        <v-card v color="transparent"  class="d-flex justify-center text-center" >
           <v-btn class="mx-2"  color="#e040fb" @click="formMasuk">
             <v-icon>mdi-plus</v-icon>
           </v-btn>
@@ -33,6 +33,24 @@
               </tbody>
             </template>
           </v-table>
+          <v-dialog v-model="dialogForm" max-width="600">
+          <v-card>
+              <v-card-title>
+                Tambah Data
+              </v-card-title>
+              <v-card-text>
+                <v-text-field v-model="formData.id" label="ID" readonly></v-text-field>
+                <v-text-field v-model="formData.judul" label="Judul"></v-text-field>
+                <v-text-field v-model="formData.image" label="URL Gambar"></v-text-field>
+                <v-text-field v-model="formData.date" label="Tanggal"></v-text-field>
+                <v-textarea v-model="formData.content" label="Konten"></v-textarea>
+              </v-card-text>
+              <v-card-actions>
+                <v-btn @click="addData">Simpan</v-btn>
+                <v-btn @click="dialogForm = false">Batal</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
         </v-card>
       </v-main>
     </v-app>
@@ -43,6 +61,15 @@
     name: 'ListData',
     data() {
       return {
+        dialogForm : false,
+        formData : {
+          id: '',
+          judul: '',
+          image: '',
+          date: '',
+          content: '',
+
+        },
         artikels: [
           {
             id: '1',
@@ -82,7 +109,49 @@
         ],
         }
       },
+      methods : {
+        formMasuk(){
+          this.formData = {
+            id: this.generateId(),
+            judul: '',
+            image: '',
+            date: '',
+            content: '',
+          };
+          this.dialogForm = true;
+        },
+        addData(){
+          if (this.formData.judul && this.formData.image && this.formData.date && this.formData.content) {
+            this.artikels.push({
+              id: this.formData.id,
+              judul: this.formData.judul,
+              image: this.formData.image,
+              date: this.formData.date,
+              content: this.formData.content,
+            });
+            this.dialogForm = false;
+          } else {
+            alert('Harap isi semua kolom formulir');
+          }
+        },
+        updateData(){
+
+        },
+        deleteData(){
+
+        },
+        generateId(){
+          return(this.artikels.length + 1).toString();
+        },
+      },
     }
-    
   </script>
+
+  <style>
+  template{
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pixground.com%2Fcolorful-background-dynamic-waves-ai-generated-4k-wallpaper%2F&psig=AOvVaw1_BTdFdEHXKR5_5mN1b2rV&ust=1699879599336000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPCJgo-_voIDFQAAAAAdAAAAABAI');
+    background-size: cover;
+    height: 100vh;
+  }
+  </style>
   
