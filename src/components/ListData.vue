@@ -2,23 +2,25 @@
   <v-app>
     <v-main>
       <v-card v color="transparent" class="d-flex justify-center text-center">
-        <v-table class="mt-5 text-center" hover="true">
+        <v-table class="mt-5 text-center" hover="true" >
           <template v-slot:default>
             <thead>
               <tr class="bg-purple text-center">
                 <th class="text-center" style="color: white">Judul</th>
                 <th class="text-center" style="color: white">gambar</th>
                 <th class="text-center" style="color: white">Date</th>
+                <th class="text-center" style="color: white">Content</th>
                 <th class="text-center" style="color: white">Action</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="artikel in artikels" :key="artikel.id">
-                <td class="bg-pink" style="width: 50%">{{ artikel.judul }}</td>
+                <td class="bg-pink" style="width: 10%">{{ artikel.judul }}</td>
                 <td class="bg-pink">
                   <v-img height="125" v-bind:src="artikel.image" alt="gambar" />
                 </td>
                 <td class="bg-pink">{{ artikel.date }}</td>
+                <td class="bg-pink" style="width: 35%">{{ artikel.content }}</td>
                 <td class="bg-pink">
                   <v-btn
                     class="bg-yellow mx-3"
@@ -110,7 +112,7 @@
 </template>
 <script>
 import { reactive } from "vue";
-import articles from "../data/articles";
+import articles from "@/data/articles";
 
 export default {
   name: "ListData",
@@ -212,3 +214,4 @@ template {
   height: 100vh;
 }
 </style>
+<!-- src/components/ListData -->
