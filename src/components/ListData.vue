@@ -6,7 +6,7 @@
             <v-icon>mdi-plus</v-icon>
           </v-btn>
   
-          <v-table class="mt-5 text-center ">
+          <v-table class="mt-5 text-center  " hover="true">
             <template v-slot:default>
               <thead>
                 <tr class="bg-purple  text-center">
@@ -18,15 +18,15 @@
               </thead>
               <tbody>
                 <tr v-for="artikel in artikels" :key="artikel.id">
-                  <td>{{ artikel.judul }}</td>
-                  <td><v-img height="125" v-bind:src="artikel.image" alt="gambar" /></td>
-                  <td>{{ artikel.content }}</td>
-                  <td>
+                  <td class="bg-pink">{{ artikel.judul }}</td>
+                  <td class="bg-pink"><v-img height="125" v-bind:src="artikel.image" alt="gambar" /></td>
+                  <td class="bg-pink">{{ artikel.content }}</td>
+                  <td class="bg-pink">
                     <v-btn>
-                      <v-icon>mdi-pencil</v-icon>
+                      <v-icon color="black">mdi-pencil</v-icon>
                     </v-btn>
                     <v-btn>
-                      <v-icon>mdi-delete</v-icon>
+                      <v-icon color="black">mdi-delete</v-icon>
                     </v-btn>
                   </td>
                 </tr>
